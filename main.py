@@ -1,27 +1,34 @@
 import asyncio
+import logging
+import os
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
+from aiogram.types import Message
+from dotenv import load_dotenv
 
-#экземпляр бота
-bot = Bot(token="Your token")
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+    raise ValueError("Ошибка: BOT_TOKEN не найден в .env файле!")
+
+bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-# Бот принимает команды, например: /start
-# Создадим хендлер - обработчик сообщений, и будем возвращать сообщения
-# Декоратор - обертка для функций
-@dp.message(Command('/start'))
-async def process_start_command(message):
-    await message.answer("Привет!")
+logging.basicConfig(level=logging.INFO)
 
+@dp.message(Command("start"))
+async def start_command(message: Message):
+    await message.answer("Привет! Бот успешно запущен. 🎉")
 
 @dp.message()
-async def echo_message(message):
+async def echo_message(message: Message):
     await message.answer(message.text)
 
-
 async def main():
+    logging.info("Бот запущен и работает! 🚀")
     await dp.start_polling(bot)
-
 
 if __name__ == "__main__":
     asyncio.run(main())
+pip freeze > requirements.txt
