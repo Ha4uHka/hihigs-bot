@@ -19,14 +19,14 @@ logging.basicConfig(level=logging.INFO)
 
 @dp.message(Command("start"))
 async def start_command(message: Message):
-    await message.answer("Привет! Бот успешно запущен. 🎉")
+    await message.answer("Привет! Бот запущен. 🎉")
 
 @dp.message()
 async def echo_message(message: Message):
     await message.answer(message.text)
 
 async def main():
-    logging.info("Бот запущен и работает! 🚀")
+    logging.info("Бот запущен и работает отлично! 🚀")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
