@@ -10,7 +10,7 @@ load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 
 if not TOKEN:
-    raise ValueError("Ошибка: BOT_TOKEN не найден в .env файле!")
+    raise ValueError("Ошибка: BOT_TOKEN не найден в .env файле.")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
