@@ -28,6 +28,6 @@ async def echo_message(message: Message):
 async def main():
     logging.info("Бот запущен и работает!")
     await dp.start_polling(bot)
-
+#Старт бота..
 if __name__ == "__main__":
     asyncio.run(main())
