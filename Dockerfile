@@ -6,4 +6,4 @@ copy requirements.txt ./
 run pip install --no-cache-dir -r requirements.txt
 
 copy . .
-cmd ["python3", "-u", "main.py"]
+cmd ["python3", "-u", "bot.py"]
